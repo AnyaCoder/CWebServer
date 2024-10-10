@@ -1,15 +1,12 @@
 
 #include "Queue.h"
 
+void push_queue(struct Queue *queue, void *data, int size);
+void pop_queue(struct Queue *queue);
+void *front_queue(struct Queue *queue);
+int queue_size(struct Queue *queue);
 
-void push_queue(struct Queue* queue, void* data, int size);
-void pop_queue(struct Queue* queue);
-void* front_queue(struct Queue* queue);
-int queue_size(struct Queue* queue);
-
-
-struct Queue queue_constructor(void)
-{
+struct Queue queue_constructor(void) {
 	struct Queue queue;
 	queue.list = linked_list_constructor();
 	queue.push = push_queue;
@@ -19,28 +16,19 @@ struct Queue queue_constructor(void)
 	return queue;
 }
 
-void queue_destructor(struct Queue* queue)
-{
+void queue_destructor(struct Queue *queue) {
 	linked_list_destructor(&queue->list);
 }
 
-void push_queue(struct Queue* queue, void* data, int size)
-{
+void push_queue(struct Queue *queue, void *data, int size) {
 	queue->list.insert(&queue->list, queue->list.length, data, size);
 }
 
-void pop_queue(struct Queue* queue)
-{
-	queue->list.remove(&queue->list, 0);
-}
+void pop_queue(struct Queue *queue) { queue->list.remove(&queue->list, 0); }
 
-void* front_queue(struct Queue* queue)
-{
-	void* data = queue->list.retrieve(&queue->list, 0);
+void *front_queue(struct Queue *queue) {
+	void *data = queue->list.retrieve(&queue->list, 0);
 	return data;
 }
 
-int queue_size(struct Queue* queue)
-{
-	return queue->list.length;
-}
+int queue_size(struct Queue *queue) { return queue->list.length; }
