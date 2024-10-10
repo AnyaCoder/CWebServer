@@ -13,11 +13,18 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: actions/setup-python@v3
+  
       - uses: pre-commit/action@v3.0.1
+        id: pre-commit
         with:
           extra_args: --all-files
-        continue-on-error: true
+
+      - name: Print pre-commit result
+        run: |
+          echo "Pre-commit result: ${{ steps.pre-commit.outputs.result }}"
+
       - name: Push changes back to repo
         if: ${{ steps.pre-commit.outputs.result == 'modified' }}
         run: |
