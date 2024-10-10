@@ -17,8 +17,9 @@ jobs:
       - uses: pre-commit/action@v3.0.1
         with:
           extra_args: --all-files
+        continue-on-error: true
       - name: Push changes back to repo
-        if: ${{ steps.pre-commit.outcome == 'failure' }}
+        if: ${{ steps.pre-commit.outputs.result == 'modified' }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
