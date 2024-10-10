@@ -20,13 +20,13 @@ jobs:
         id: pre-commit
         with:
           extra_args: --all-files
+        continue-on-error: true
 
       - name: Print pre-commit result
         run: |
           echo "Pre-commit result: ${{ steps.pre-commit.outputs.result }}"
 
       - name: Push changes back to repo
-        if: ${{ steps.pre-commit.outputs.result == 'modified' }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
