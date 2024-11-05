@@ -3,20 +3,20 @@
 
 #include "../DataStructures/Lists/Queue.h"
 
-//#ifdef _WIN32
-//#include <windows.h>
-//#include <process.h>  // Windows线程相关
-// typedef HANDLE thread_t;        // Windows线程类型
-// typedef CRITICAL_SECTION mutex_t; // Windows互斥锁
-// typedef CONDITION_VARIABLE cond_t; // Windows条件变量
-//#else
+// #ifdef _WIN32
+// #include <windows.h>
+// #include <process.h>  // Windows线程相关
+//  typedef HANDLE thread_t;        // Windows线程类型
+//  typedef CRITICAL_SECTION mutex_t; // Windows互斥锁
+//  typedef CONDITION_VARIABLE cond_t; // Windows条件变量
+// #else
 #define HAVE_STRUCT_TIMESPEC
 #include <pthread.h>             // Linux线程相关
 typedef pthread_t thread_t;      // Linux线程类型
 typedef pthread_mutex_t mutex_t; // Linux互斥锁
 typedef pthread_cond_t cond_t;   // Linux条件变量
 
-//#endif
+// #endif
 
 struct ThreadPool {
 	int num_threads;
