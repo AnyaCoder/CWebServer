@@ -1844,7 +1844,7 @@ CJSON_PUBLIC(cJSON_bool) cJSON_AddItemToArray(cJSON *array, cJSON *item) {
 
 #if defined(__clang__) ||                                                      \
     (defined(__GNUC__) &&                                                      \
-     ((__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ > 5))))
+	 ((__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ > 5))))
 #pragma GCC diagnostic push
 #endif
 #ifdef __GNUC__
@@ -1854,7 +1854,7 @@ CJSON_PUBLIC(cJSON_bool) cJSON_AddItemToArray(cJSON *array, cJSON *item) {
 static void *cast_away_const(const void *string) { return (void *)string; }
 #if defined(__clang__) ||                                                      \
     (defined(__GNUC__) &&                                                      \
-     ((__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ > 5))))
+	 ((__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ > 5))))
 #pragma GCC diagnostic pop
 #endif
 
@@ -2149,10 +2149,10 @@ cJSON_ReplaceItemViaPointer(cJSON *const parent, cJSON *const item,
 		}
 		parent->child = replacement;
 	} else { /*
-		      * To find the last item in array quickly, we use prev in array.
-		      * We can't modify the last item's next pointer where this item was
-		      * the parent's child
-		      */
+	          * To find the last item in array quickly, we use prev in array.
+	          * We can't modify the last item's next pointer where this item was
+	          * the parent's child
+	          */
 		if (replacement->prev != NULL) {
 			replacement->prev->next = replacement;
 		}
