@@ -377,8 +377,8 @@ cJSON_SetValuestring(cJSON *object, const char *valuestring);
 #define cJSON_SetBoolValue(object, boolValue)                                  \
 	((object != NULL && ((object)->type & (cJSON_False | cJSON_True)))         \
 	     ? (object)->type = ((object)->type & (~(cJSON_False | cJSON_True))) | \
-	                        ((boolValue) ? cJSON_True : cJSON_False)           \
-	     : cJSON_Invalid)
+		                    ((boolValue) ? cJSON_True : cJSON_False)           \
+		 : cJSON_Invalid)
 
 /* Macro for iterating over an array or object */
 #define cJSON_ArrayForEach(element, array)                                     \
